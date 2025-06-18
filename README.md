@@ -1,11 +1,20 @@
-# ZMK Module Template
+![cinque wireless build](cinque0071.jpg)
+*cinque is an open-source 56-key compact staggered low-profile split ortholinear mechanical RGB keyboard with rotary encoders*
 
-This repository contains a template for a ZMK module, as it would most frequently be used. 
+* Keyboard Maintainer: [swaziloo](https://github.com/swaziloo)
+* Hardware Supported: cinque v1 (Bluetooth) with NRF52840 ProMicro MCU
+  * cinque (likely) works with other ProMicro controllers
+* Hardware Availability: [github/swaziloo/cinque](https://github.com/swaziloo/cinque)
 
-## Usage
+## Building the Firmware
+You should familiarize yourself with [ZMK Firmware](https://zmk.dev/docs/user-setup).
+GitHub workflows build firmware using the main ZMK repository.
+Download your firmware from your repository under `Actions->[Your Commit Message]->firmware` 
+It will be packaged in a .zip file separate `.uf2` files for the left and right halves.
 
-Read through the [ZMK Module Creation](https://zmk.dev/docs/development/module-creation) page for details on how to configure this template.
+## Flashing
+Double tap the reset (RST) button on your MCU or board. 
+The ProMicro will connect as a USB drive into which you drop the `.uf2` file you just built.
+The ProMicro will reconnect as a keyboard once it installs the firmware. Connect and flash both MCUs independently.
 
-## More Info
-
-For more info on modules, you can read through  through the [Zephyr modules page](https://docs.zephyrproject.org/3.5.0/develop/modules.html) and [ZMK's page on using modules](https://zmk.dev/docs/features/modules). [Zephyr's west manifest page](https://docs.zephyrproject.org/3.5.0/develop/west/manifest.html#west-manifests) may also be of use.
+cinque is licensed under an [MIT License](LICENSE).

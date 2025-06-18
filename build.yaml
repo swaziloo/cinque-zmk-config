@@ -20,6 +20,6 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: cinque_left nice_view
+    shield: cinque_left nice_view_gem
   - board: nice_nano_v2
-    shield: cinque_right nice_view
+    shield: cinque_right nice_view_gem
