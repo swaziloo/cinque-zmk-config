@@ -1,5 +1,5 @@
 ![cinque wireless build](cinque0071.jpg)
-*cinque is an open-source 56-key compact staggered low-profile split ortholinear mechanical RGB keyboard with rotary encoders*
+*cinque is an open-source 56-key compact staggered low-profile split columnar mechanical RGB keyboard with rotary encoders*
 
 * Keyboard Maintainer: [swaziloo](https://github.com/swaziloo)
 * Hardware Supported: cinque v1 (Bluetooth) with NRF52840 ProMicro MCU
