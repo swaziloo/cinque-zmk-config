@@ -22,14 +22,6 @@
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
             tap-ms = <65>;
         };
-
-        // Encoder for volume control
-        volume_rot: sensor_rotate_key_press {
-            compatible = "zmk,behavior-sensor-rotate-key-press";
-            #sensor-binding-cells = <0>;
-            bindings = <&kp C_VOL_DN>, <&kp C_VOL_UP>;
-            tap-ms = <65>;
-        };
     };
 
     keymap {
@@ -44,7 +36,7 @@
         &kp EQUAL  &kp Z   &kp X     &kp C      &kp V      &kp B      &kp F3    &kp C_PP   &kp N      &kp M    &kp COMMA  &kp DOT   &kp SLASH  &kp MINUS
                            &kp LEFT  &kp RIGHT  &kp LCTRL  &kp LSHFT  &kp BSPC  &kp ENTER  &kp SPACE  &mo MOD  &kp UP     &kp DOWN
             >;
-            sensor-bindings = <&scroll_rot>, <&volume_rot>;
+            sensor-bindings = <&scroll_rot &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         // mod
@@ -57,7 +49,7 @@
         &to 2      &trans  &trans    &trans   &trans    &trans  &trans   &trans  &trans  &trans  &kp LBKT   &kp RBKT   &trans  &trans
                            &kp HOME  &kp END  &kp LALT  &trans  &kp DEL  &trans  &trans  &trans  &kp PG_UP  &kp PG_DN
             >;
-            sensor-bindings = <&scroll_rot>, <&volume_rot>;
+            sensor-bindings = <&scroll_rot &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         // lower
@@ -70,7 +62,7 @@
         &to 0      &none     &kp HOME  &kp END   &none   &kp INS  &trans  &trans  &none     &none     &kp PG_UP  &kp PG_DN  &kp RGUI         &none
                              &trans    &trans    &trans  &trans   &trans  &trans  &trans    &mo CTRL  &trans     &trans
             >;
-            sensor-bindings = <&scroll_rot>, <&volume_rot>;
+            sensor-bindings = <&scroll_rot &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         // control
@@ -83,7 +75,7 @@
         &sys_reset    &none         &none         &none         &none         &none         &none  &none  &none  &none  &none  &none  &none  &sys_reset 
                                     &bt BT_PRV    &bt BT_NXT    &none         &none         &none  &none  &none  &none  &none  &none  &none   
             >;
-            sensor-bindings = <&scroll_rot>, <&volume_rot>;
+            sensor-bindings = <&scroll_rot &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
     };
 };
