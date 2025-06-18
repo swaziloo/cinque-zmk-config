@@ -5,6 +5,7 @@
 * Hardware Supported: cinque v1 (Bluetooth) with NRF52840 ProMicro MCU
   * cinque (likely) works with other ProMicro controllers
 * Hardware Availability: [github/swaziloo/cinque](https://github.com/swaziloo/cinque)
+* [nice-view-gem](https://github.com/M165437/nice-view-gem) shield designed and shared by [Michael Schmidt-Voigt](https://github.com/M165437).
 
 ## Building the Firmware
 You should familiarize yourself with [ZMK Firmware](https://zmk.dev/docs/user-setup).
