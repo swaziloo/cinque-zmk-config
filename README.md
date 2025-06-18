@@ -6,7 +6,7 @@
   * cinque (likely) works with other ProMicro controllers
 * Hardware Availability: [github/swaziloo/cinque](https://github.com/swaziloo/cinque)
 * [nice-view-gem](https://github.com/M165437/nice-view-gem) shield designed and shared by [Michael Schmidt-Voigt](https://github.com/M165437)
-* [QMK](https://github.com/swaziloo/cinque/qmk) firmware is recommended for wired/RP2040 builds
+* [QMK](https://github.com/swaziloo/cinque/blob/main/qmk/cinque/README.md) firmware is recommended for wired/RP2040 builds
 
 ## Building the Firmware
 You should familiarize yourself with [ZMK Firmware](https://zmk.dev/docs/user-setup).
