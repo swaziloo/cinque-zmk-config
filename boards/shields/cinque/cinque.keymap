@@ -1,0 +1,89 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
+
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20 // default: 10
+#include <dt-bindings/zmk/pointing.h>
+
+#define MAIN 0
+#define MOD 1
+#define LOWER 2
+#define CTRL 3
+
+/ {
+
+    behaviors {
+        // Encoder for scrolling
+        scroll_rot: sensor_rotate_msc {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+            tap-ms = <65>;
+        };
+
+        // Encoder for volume control
+        volume_rot: sensor_rotate_key_press {
+            compatible = "zmk,behavior-sensor-rotate-key-press";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp C_VOL_DN>, <&kp C_VOL_UP>;
+            tap-ms = <65>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        qwerty_layer {
+            display-name = "Main";
+            bindings = <
+                   &kp N1  &kp N2    &kp N3     &kp N4     &kp N5                          &kp N6     &kp N7   &kp N8     &kp N9    &kp N0
+        &kp TAB    &kp Q   &kp W     &kp E      &kp R      &kp T                           &kp Y      &kp U    &kp I      &kp O     &kp P      &kp BSLH
+        &kp ESC    &kp A   &kp S     &kp D      &kp F      &kp G                           &kp H      &kp J    &kp K      &kp L     &kp SEMI   &kp APOS
+        &kp EQUAL  &kp Z   &kp X     &kp C      &kp V      &kp B      &kp F3    &kp C_PP   &kp N      &kp M    &kp COMMA  &kp DOT   &kp SLASH  &kp MINUS
+                           &kp LEFT  &kp RIGHT  &kp LCTRL  &kp LSHFT  &kp BSPC  &kp ENTER  &kp SPACE  &mo MOD  &kp UP     &kp DOWN
+            >;
+            sensor-bindings = <&scroll_rot> <&volume_rot>;
+        };
+
+        // mod
+        mod_layer {
+            display-name = "Mod";
+            bindings = <
+                   &trans  &trans    &trans   &trans    &trans                   &trans  &trans  &trans     &trans     &trans
+        &kp GRAVE  &trans  &trans    &trans   &trans    &trans                   &trans  &trans  &trans     &trans     &trans  &trans
+        &trans     &trans  &trans    &trans   &trans    &trans                   &trans  &trans  &trans     &trans     &trans  &trans
+        &to 2      &trans  &trans    &trans   &trans    &trans  &trans   &trans  &trans  &trans  &kp LBKT   &kp RBKT   &trans  &trans
+                           &kp HOME  &kp END  &kp LALT  &trans  &kp DEL  &trans  &trans  &trans  &kp PG_UP  &kp PG_DN
+            >;
+            sensor-bindings = <&scroll_rot> <&volume_rot>;
+        };
+
+        // lower
+        lower_layer {
+            display-name = "Lower";
+            bindings = <
+                   &kp F1    &kp F2    &kp F3    &kp F4  &kp F5                   &kp F6    &kp F7    &kp F8     &kp F9     &kp F10
+        &kp GRAVE  &kp N1    &kp N2    &kp N3    &kp N4  &kp N5                   &kp N6    &kp N7    &kp N8     &kp N9     &kp N0           &kp F11
+        &trans     &kp LCTL  &kp LGUI  &kp LALT  &none   &none                    &kp LBKT  &kp RBKT  &kp PSCRN  &kp SLCK   &kp PAUSE_BREAK  &kp F12
+        &to 0      &none     &kp HOME  &kp END   &none   &kp INS  &trans  &trans  &none     &none     &kp PG_UP  &kp PG_DN  &kp RGUI         &none
+                             &trans    &trans    &trans  &trans   &trans  &trans  &trans    &mo CTRL  &trans     &trans
+            >;
+            sensor-bindings = <&scroll_rot> <&volume_rot>;
+        };
+
+        // control
+        ctrl_layer {
+            display-name = "<CTRL>";
+            bindings = <
+                      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                &none  &none  &none  &none  &none
+        &bootloader   &none         &none         &none         &none         &none                       &none  &none  &none  &none  &none  &bootloader 
+        &none         &none         &none         &bt BT_CLR    &none         &none                       &none  &none  &none  &none  &none  &none 
+        &sys_reset    &none         &none         &none         &none         &none         &none  &none  &none  &none  &none  &none  &none  &sys_reset 
+                                    &bt BT_PRV    &bt BT_NXT    &none         &none         &none  &none  &none  &none  &none  &none  &none   
+            >;
+            sensor-bindings = <&scroll_rot> <&volume_rot>;
+        };
+    };
+};
